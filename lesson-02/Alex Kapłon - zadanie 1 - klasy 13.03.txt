@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class human
+{
+    public:
+    int age;
+    string name;
+    void write();
+};
+void human :: write ()
+{
+    cout << age << " "<< name<<endl;
+}
+class tree
+{
+    public:
+    int age;
+    string type;
+    void write();
+};
+void tree :: write ()
+{
+    cout << age << " "<< type<<endl;
+}
+int main()
+{
+    class human a;
+    class tree b;
+    cin >> a.age;
+    cin >> a.name;
+    a.write();
+    cin >> b.age;
+    cin >> b.type;
+    b.write();
+    
+
+    return 0;
+}
