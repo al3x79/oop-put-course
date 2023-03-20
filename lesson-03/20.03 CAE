@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+class CAE {
+private :
+    double results;
+public :
+void CAE (double a){
+        results += a;
+    }
+void UseOfEnglish (double result_1){
+    results = results + result_1;
+}
+void Writing (double result_2){
+    results = results + result_2;
+}
+void Speaking (double result_3){
+    results = results + result_3;
+}
+
+};
+class CANDIDATE{
+private : 
+    string name;
+    
+public:
+    CANDIDATE (string n){
+        name = n;
+    }    
+void show(){
+    if ((results >=200) && (results <=300)){
+        cout << name << "PASSED"<< endl;
+    }
+    else{
+        cout << name << "NOT PASSED"<< endl;
+    } 
+}
+};
+int main()
+{
+    CANDIDATE c1("Matthew");
+    CANDIDATE c2 ("John");
+    
+    c1.UseOfEnglish(80);
+    c1.Writing(90);
+    c1.Speaking (95);
+    
+    c2.UseOfEnglish(30);
+    c2.Writing(50);
+    c2.Speking(80);
+    
+    c1.show();
+    c1.show();
+
+    return 0;
+}
