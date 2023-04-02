@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Animal {
+public:
+    string naming;
+    int how_old;
+    
+    void info (){
+        cout << "Animal's name: " << naming << " , Animal's age: " << how_old << endl;
+    };
+    
+    Animal(string name) : Animal(1, name) {}
+    
+    Animal(int age, string name = "") : naming(name), how_old(age) {
+    }
+};
+
+int main() {
+    
+    
+    Animal n2("Pocky");
+    Animal n3(20,"Rocky");
+    n2.info();
+    return 0;
+}
