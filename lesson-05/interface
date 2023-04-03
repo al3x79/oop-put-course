@@ -27,3 +27,56 @@ int main() {
 
     return 0;
 }
+#include <iostream>
+
+using namespace std;
+
+class Figure_Area {
+public:
+    virtual float Area() = 0;
+    
+};
+
+class Rectangle:public Figure_Area {
+private:
+    int x,y;
+    
+public:
+    Rectangle (int x, int y){
+        this->x=x;
+        this->y=y;
+
+    }
+    float Area() override {
+        return (x*y);
+    }
+};
+
+class Triangle:public Figure_Area {
+private:
+    int x,y;
+    
+public:
+Triangle (int x, int y){
+        this->x=x;
+        this->y=y;
+    float Area() override {
+        return (x*y)/2.0;
+    }
+};
+
+int main() {
+    Rectangle rectangle;
+    Triangle triangle;
+
+    rectangle.Hight(5);
+    rectangle.Base(2);
+
+    triangle.Hight(1);
+    triangle.Base(5);
+
+    cout << rectangle.Area() << endl;
+    cout <<triangle.Area() << endl;
+
+    return 0;
+}
