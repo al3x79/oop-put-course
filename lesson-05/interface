@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+class Interface {
+public:
+    virtual double getArea()
+    const = 0;
+};
+
+class Circle : public Interface {
+private:
+    const double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+
+    double getArea() const override {
+        return 3.14 * radius * radius;
+    }
+};
+int main() {
+
+    const Circle circle(5);
+
+    double area = circle.getArea();
+    cout << "Circle's area : " << area << endl;
+
+    return 0;
+}
