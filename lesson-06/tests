@@ -1,0 +1,73 @@
+#include <sstream>
+# include <iostream>
+# include <memory>
+
+class Sequence {
+    public :
+virtual int Lenght ()=0;
+class FakeSequence : public Sequence {
+public:
+    int Length() override {
+        return 100;
+    }
+}
+class Gene {
+    private :
+    std :: string name_;
+    std :: shared_ptr<Sequence> sequence_;
+    public :
+    Gene (std :: strig name, std :: shared_ptr<Sequence>sequence):
+    name_(name), sequence_(sequence){};
+    std :: string JSON(){
+        std :: stringstream ss;
+        ss << "{";
+        ss << "\"name\n: \"" <<name "\",";
+        ss<"\"lenght\": " <<sequence_->Lenght()<< "";
+        ss<< "}";
+        return ss.str();
+    }
+};
+int main (){
+    std :: shared_ptr<Sequence>fakeSequence = std :: make_shared<FakeSequence>();
+    Gene gene(name: "BALF5", sequence:fakeSequence);
+    std :: cout << gene.JSON
+}
+************************
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Sequence {
+public:
+    virtual int Length() = 0;
+};
+
+class FakeSequence : public Sequence {
+public:
+    int Length() override { return 100; }
+};
+
+class Gene {
+private:
+    Sequence* sequence;
+    string name;
+
+public:
+    Gene(Sequence* sequence, const string& name) : sequence(sequence), name(name) {}
+
+    void JSON() {
+        cout << "{\n";
+        cout << "\t\"Name\": \"" << name << "\",\n";
+        cout << "\t\"length\": " << sequence->Length() <<endl;
+        cout << "}\n";
+    }
+};
+int main() {
+    FakeSequence x;
+    Gene gene(&x, "BALF5");
+
+    gene.JSON();
+
+    return 0;
+}
