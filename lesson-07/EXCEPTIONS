@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class Logexception : public exception {
+public:
+    Logexception(const string & message) : message_(message) {}
+    const char* what() const noexcept override {
+        return message_.c_str();
+    }
+private:
+    string message_;
+};
+
+class Wrongbase : public Logexception {
+public:
+    Wrongbase() : Logexception(" base must be greater than 0.") {}
+};
+
+class Wrongnumber : public Logexception {
+public:
+    Wrongnumber() : Logexception("number must be greater than 0.") {}
+};
+class Base_1_number_not_1 : public Logexception{
+    public:
+    Base_1_number_not_1() : Logexception ("if base equals 1, the number cannot be any different"){}
+};
+class Logarithm {
+private:
+    double base_;
+    double number_;
+public:
+    Logarithm(double base, double number) : base_(base), number_(number) {}
+    double Calculate() const {
+        if (base_ <= 0) {
+            throw Wrongbase();
+        }
+        if (number_ <= 0) {
+            throw Wrongnumber();
+        }
+        if (base_ == 1 && number_ != 1)
+            throw Base_1_number_not_1();
+        return log(number_) / log(base_);
+    }
+
+};
+
+int main() {
+    double base, number;
+    cout << "Enter the base: ";
+    cin >> base;
+    cout << "Enter the number: ";
+    cin >> number;
+    try {
+        Logarithm log(base, number);
+        double result = log.Calculate();
+        cout << "The logarithm of " << number << " with base " << base << " is: " << result << endl;
+    }
+    catch (const Logexception & EX) {
+        cout << "Error: " << EX.what() << endl;
+        return 1;
+    }
+    return 0;
+}
