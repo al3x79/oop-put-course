@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1684103077 source:c:\users\al3xk\onedrive\pulpit\projekt1\main.cpp
+	<iostream>
+	<map>
+	<string>
+	<cctype>
+
