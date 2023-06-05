@@ -1,0 +1,39 @@
+#include <iostream>
+#include <thread>
+#include <vector>
+#include <mutex>
+#include <atomic>
+using namespace std;
+mutex mtx;
+atomic<int> A(0);
+atomic<int> C(0);
+atomic<int> G(0);
+atomic<int> T(0);
+void counter(string& yoursequence, int end, int start) {
+	for (int i = start; i <= end; i++) {
+		if (yoursequence[i] == 'A') {
+			++A;
+		}
+		else if (yoursequence[i] == 'T') {
+			++T;
+		}
+		else if (yoursequence[i] == 'C') {
+			++C;
+		}
+		else if (yoursequence[i] == 'G') {
+			++G;
+		}
+	}
+}
+
+int main() {
+	string yoursequence;
+	cout << "Enter sequence" << endl;
+	cin >> yoursequence;
+	
+	vector<thread> threads;
+	thread count(counter);
+	count.join();
+	
+	return 0;
+}
